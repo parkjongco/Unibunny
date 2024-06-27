@@ -1,6 +1,4 @@
  	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 			<!DOCTYPE html>
 			<html>
 
@@ -18,21 +16,21 @@
 
 			<body>
 				<div class="wrapper">
-					<jsp:include page="../../common/header.jsp" />
+					<jsp:include page="../common/header.jsp" />
 					<div class="body_area">
 						<div class="body for_pc">
 							<div class="wrap">
 								<div class="con_wrap">
 									<div class="con">
 										<div class="title_box">
-											<p class="title" id="board_seq"># ${dto.board_seq}</p>
+											<p class="title" id="board_seq"></p>
 										</div>
 										<div class="cont_box">
 											<div class="cont_body">
 												<div class="board_box">
 													<div class="board_head">
 														<div class="title">
-															<div id="board_title">${dto.title }</div>
+															<div id="board_title"></div>
 															<div class="btn_box">
 																<button class="option_btn mark_option" id="bookmark_btn" type="button">
 																	<i class="fa-regular fa-bookmark option_icon"></i>
@@ -46,14 +44,13 @@
 															</div>
 														</div>
 														<div class="board_info">
-															<div class="writer">작성자 : ${dto.nickname}</div>
+															<div class="writer">작성자 :</div>
 															<div class="write_date">
 																작성날짜 :
-																<fmt:formatDate value="${dto.write_date}"
-																	pattern="yyyy.MM.dd HH:mm" />
+
 															</div>
-															<div class="views">조회수 : ${dto.view_count}</div>
-															<div class="likes">스크랩 수 : ${bookmark}</div>
+															<div class="views">조회수 : </div>
+															<div class="likes">스크랩 수 : </div>
 															<div class="edit_box">
 
 																<div class="btn_box">
@@ -73,7 +70,7 @@
 														</div>
 													</div>
 													<div class="board_body">
-														<div class="board_cont" id="board_cont">${dto.content}</div>
+														<div class="board_cont" id="board_cont"></div>
 													</div>
 												</div>
 												<div class="option_box">
@@ -118,7 +115,7 @@
 						</div>
 					</div>
 				</div>
-				<jsp:include page="../../common/footer.jsp" />
+				<jsp:include page="../common/footer.jsp" />
 				<script>
 					$(document).ready(function () {
 						get_likes_record("${loginID}");

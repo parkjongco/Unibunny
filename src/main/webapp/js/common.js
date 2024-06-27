@@ -1,4 +1,4 @@
-// 모바일 햄버거 기능
+q// 모바일 햄버거 기능
 $(document).ready(function() {
 	$('.mob_ham').click(function() {
 		$('.mob_menu,.page_cover,html').addClass('mob_open');

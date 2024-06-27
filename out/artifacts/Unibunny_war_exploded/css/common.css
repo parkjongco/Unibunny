@@ -219,6 +219,11 @@ img {
   position: relative;
 }
 
+#mypage_btn,
+#logout_btn{
+  height: 34px;
+}
+
 input,
 select,
 textarea,

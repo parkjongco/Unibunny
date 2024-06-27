@@ -112,6 +112,8 @@ public class BoardController extends HttpServlet {
 		Gson gson = new GsonBuilder().setDateFormat("yyyy.MM.dd").create();
 		// reponse writer 변수 저장
 		PrintWriter pw = response.getWriter();
+		// 게시글 상세 페이지 이동 시 manager와 user의 분기 처리를 위한 변수 선언
+		String grade = "";
 		try {
 	        if (cmd.equals("/list.board")) {
 	        	System.out.println(game_Id);
@@ -134,7 +136,7 @@ public class BoardController extends HttpServlet {
 						cpage * Pagination.recordCountPerPage, game_Id);
 				request.setAttribute("boardlist", list);
 				
-			} else if (cmd.equals("/user/detail.board")) {
+			} else if (cmd.equals("/" + grade + "/detail.board")) {
 				// 게시글 상세 페이지
 				int board_seq = Integer.parseInt(request.getParameter("board_seq"));
 				request.setAttribute("dto", dao.selectBySeq(board_seq));
@@ -142,7 +144,14 @@ public class BoardController extends HttpServlet {
 				// 해당 게시글의 북마크 수
 				request.setAttribute("bookmark", BookMarkDAO.getInstance().selectByBoardSeq(board_seq));
 //				request.setAttribute("nickname", MemberDAO.getInstance().getNickname(loginID));
-				request.getRequestDispatcher("/user/crud/detail.jsp").forward(request, response);
+				if (grade.equals("user")){
+					request.getRequestDispatcher("/user/crud/detail.jsp").forward(request, response);
+				} else if (grade.equals("manager")) {
+					request.getRequestDispatcher("/manager/board_detail.jsp").forward(request, response);
+				} else {
+					response.sendRedirect("/index.jsp");
+				}
+
 			} else if(cmd.equals("/likes.board")) {
 				// 게시글 좋아요
 				int board_seq = Integer.parseInt(request.getParameter("board_seq"));

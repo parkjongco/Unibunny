@@ -100,23 +100,28 @@ public class MemberController extends HttpServlet {
                     // 로그인 성공 시
                     HttpSession session = request.getSession(true);
                     session.setAttribute("loginID", userid);
+
+                    // 예제에서는 mdao.getAccount(userid)를 사용하여 memcode를 가져옴
                     Map<String, String> map = mdao.getAccount(userid);
 
                     session.setAttribute("nickName", map.get("nickname"));
                     session.setAttribute("profileImg", map.get("profile_img"));
                     session.setAttribute("memcode", map.get("memcode"));
 
-                    if ("0".equals(map.get("memcode"))) {
-                        response.sendRedirect("user/main.jsp");
+                    // memcode에 따라 리다이렉트 결정
+                    String memcode = map.get("memcode");
+                    if ("0".equals(memcode)) {
+                        response.sendRedirect("user/main.jsp"); // 일반 사용자 페이지
+                    } else if ("1".equals(memcode)) {
+                        response.sendRedirect("manager/board_list.jsp"); // 관리자 페이지
                     } else {
-                        response.sendRedirect("manager/main.jsp");
+                        // 기타 memcode 값에 대한 처리
+                        response.sendRedirect("user/main.jsp"); // 일반 사용자 페이지로 기본 리다이렉트
                     }
                 } else {
                     // 로그인 실패 시
                     response.getWriter().write("<script>alert('로그인 정보를 다시 확인하세요'); location.href='login/login.jsp'</script>");
                 }
-
-
 
 //				회원가입 ajax 정규표현식 코드
             } else if (cmd.equals("/check.member")) {

@@ -18,6 +18,17 @@ local.properties
 .recommenders
 .web.xml
 
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+target/
+
+
+
 # External tool builders
 .externalToolBuilders/
 
