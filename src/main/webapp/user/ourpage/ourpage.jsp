@@ -118,11 +118,11 @@
                             <img src="../../image/main/문경원 증명사진.jpg" alt="">
                           </div>
                           <div class="our_cont">
-                            <span class="our_name">문경원</span>
-                            <span class="our_insta">moontari_96</span>
+                            <span class="our_name">손민서</span>
+                            <span class="our_insta">minseo._.10.17</span>
                             <span class="our_phone"></span>
-                            <span class="our_txt">안녕하세요 풀스택 개발자를 꿈꾸는 알파메일 문경원입니다.</span>
-                            <span class="our_stack">JS, JAVA, React, SQL</span>
+                            <span class="our_txt">안녕하세요 풀스택 개발자를 꿈꾸는 손민서입니다.</span>
+                            <span class="our_stack">JS, JAVA, SQL</span>
                             <span class="our_role">GIT 관리 및 UI 관리</span>
                           </div>
                         </div>
@@ -138,4 +138,41 @@
       <jsp:include page="../../common/footer.jsp" />
     </div>
 </body>
+<script>
+/* function initializeOurSwiper() {
+	  if (ourpage_swiper) {
+	    ourpage_swiper.destroy(true, true); // 기존 Swiper 인스턴스를 파괴
+	  }
+
+	  let slidesPerView;
+
+	  if ($(window).width() < 650) {
+	    slidesPerView = 1;
+	  } else if ($(window).width() < 750) {
+	    slidesPerView = 2;
+	  } else if ($(window).width() < 950) {
+	    slidesPerView = 3;
+	  } else if ($(window).width() < 1200) {
+	    slidesPerView = 4;
+	  } else {
+	    slidesPerView = 5;
+	  }
+
+	  ourpage_swiper = new Swiper('.ourpage_swiper', {
+	    slidesPerView: slidesPerView,
+	    spaceBetween: 30,
+	    navigation: {
+	      nextEl: '.swiper_ourpage_next',
+	      prevEl: '.swiper_ourpage_prev',
+	    },
+	  });
+	} */
+$(document).ready(function () {
+	initializeOurSwiper(); // ourpage 스와이퍼 재설정
+    
+	$(window).resize(function () {
+		initializeOurSwiper(); // ourpage 스와이퍼 재설정
+	});
+});
+</script>
 </html>
